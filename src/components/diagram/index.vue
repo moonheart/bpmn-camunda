@@ -9,7 +9,7 @@
             <div ref="canvas" class="canves"></div>
             <div class="properties" :class="{open: openPanel}">
               <div class="toggle" @click="openPanel = !openPanel">Properties Panel</div>
-              <div ref="propertiesPanel" class="panel"></div>
+              <div ref="propertiesPanel" class="properties-container"></div>
             </div>
           </div>
         </div>
@@ -200,7 +200,6 @@ export default {
   }
 
   .properties {
-    overflow: auto;
     position: relative;
     width: 0px;
     flex: none;
@@ -209,12 +208,12 @@ export default {
     outline: none;
     background: #f8f8f8;
     &.open {
-      width: 250px;
+      width: 400px;
     }
 
     .toggle {
       position: absolute;
-      left: -30px;
+      left: -33px;
       top: 50%;
       background: #f8f8f8;
       padding: 7px 10px;
@@ -230,12 +229,13 @@ export default {
       user-select: none;
     }
 
-    .panel {
-      border-left: 1px solid #ccc;
-      overflow: auto;
-      /deep/.bpp-properties-panel {
-        height: 100%;
-      }
+    .properties-container{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow-y: auto;
     }
   }
 }
@@ -249,5 +249,13 @@ export default {
 
 /deep/.CodeMirror {
   height: calc(100vh - 95px);
+}
+</style>
+<style lang="less">
+.bpp-properties-entry label{
+  font-size: 12px;
+}
+.bpp-field-description{
+  font-size: 12px;
 }
 </style>
